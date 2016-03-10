@@ -7,10 +7,7 @@ import scipy as sp
 def image_svd(n):
     
 
-    
-    
-   
- # to keep the 30 none zero elements
+    # to keep the 30 none zero elements
     Sr1=Sr.copy()
     Sg1=Sg.copy()
     Sb1=Sb.copy()
@@ -46,13 +43,6 @@ def image_svd(n):
     plt.show()
 
 
-#to find U, sigma and V for red matrix
-Ur, Sr, Vr = sp.linalg.svd(r) 
-#to find U, sigma and V for green matrix
-Ug, Sg, Vg = sp.linalg.svd(g) 
-#U, sigma and V for blue matrix
-Ub, Sb, Vb = sp.linalg.svd(b) 
-
 #the original resolution
 img=mpimg.imread('Image.jpg')
 [r,g,b] = [img[:,:,i] for i in range(3)]
@@ -66,6 +56,13 @@ ax2.imshow(r, cmap = 'Reds')
 ax3.imshow(g, cmap = 'Greens')
 ax4.imshow(b, cmap = 'Blues')
 plt.show()
+
+#to find U, sigma and V for red matrix
+Ur, Sr, Vr = sp.linalg.svd(r) 
+#to find U, sigma and V for green matrix
+Ug, Sg, Vg = sp.linalg.svd(g) 
+#U, sigma and V for blue matrix
+Ub, Sb, Vb = sp.linalg.svd(b) 
 
 #to find the none zero elements in sigma of each red, green and blue matrices
 nonzero_r=np.count_nonzero(Sr)
